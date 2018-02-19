@@ -23,7 +23,16 @@ for list in os.listdir(rootdir):
     #将dt数据插入数据库表
     for row in dt.iterrows():
         try:
-            cursor.execute("insert into t_lrb(code,date,yyzsr,yysr,lxsr,yzbf,sxfjyjsr,fdcxssr,qtywsr,yyzcb,yycb,lxzc,sxfjyjzc,fdcxscb,yffy,tbj,pfzcje,tqbxhtzbjje,bdhlzc,fbfy,qtywcb,yysjjfj,xsfy,glfy,cwfy,zcjzss,gyjzbdsy,tzsy,dyyqyhhyqydtzsy,hdsy,qhsy,tgsy,btsr,qtywlr,yylr,yywsr,yywzc,fldzcczss,lrze,sdsfy,wqrtzss,jlr,gsymgssyzdjlr,bhbfzhbqsxjlr,ssgdsy,jbmgsy,xsmgsy) values('%s','%s','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f','%f')" \
+            cursor.execute("insert into t_lrb(code,date,yyzsr,yysr,lxsr,yzbf,sxfjyjsr,fdcxssr,qtywsr,yyzcb,yycb,lxzc,sxfjyjzc,fdcxscb,yffy,tbj,pfzcje,tqbxhtzbjje,bdhlzc,fbfy,qtywcb,yysjjfj,xsfy,glfy,cwfy,zcjzss,gyjzbdsy,tzsy,dyyqyhhyqydtzsy,hdsy,qhsy,tgsy,btsr,qtywlr,yylr,yywsr,yywzc,fldzcczss,lrze,sdsfy,wqrtzss,jlr,gsymgssyzdjlr,bhbfzhbqsxjlr,ssgdsy,jbmgsy,xsmgsy) "
+                           "values('%s','%s','%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f',"\
+                           "'%f','%f','%f','%f','%f')" \
                            % (list,row[0],\
                               float(row[1][0] if row[1][0]!='--' else 0),float(row[1][1] if row[1][1]!='--' else 0),float(row[1][2] if row[1][2]!='--' else 0),float(row[1][3] if row[1][3]!='--' else 0),float(row[1][4] if row[1][4]!='--' else 0),\
                               float(row[1][5] if row[1][5]!='--' else 0),float(row[1][6] if row[1][6]!='--' else 0),float(row[1][7] if row[1][7]!='--' else 0),float(row[1][8] if row[1][8]!='--' else 0),float(row[1][9] if row[1][9]!='--' else 0),\
@@ -42,7 +51,7 @@ for list in os.listdir(rootdir):
             print(list+"出错在位置"+str(i))
             print(e)
 
-    print(list+'利润表完成'+'共插入记录'+str(i)+'条')
+    print(list+'利润表完成,共插入记录'+str(i)+'条')
     i=0
 
 print('共插入'+str(num)+'条记录')
